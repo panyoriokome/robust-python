@@ -96,7 +96,19 @@ class Snack:
 Error(0, False)
 Snack("Invalid", Set())
 Snack("Pretzel", {"Mustard", "Relish"})
-Snack("Pretzel", {"Mustard"})
+# 以下の3つはLiteralの条件にしたがっているためエラーにならない
+Snack("Pretzel", {"Mustard"}) 
 Snack("Pretzel", {"Ketchup"})
 Snack("Pretzel", {"Mustard", "Ketchup"})
-Snack("Pretzel", {None})
+
+
+from typing import NewType
+
+class HotDog:
+    ''' Used to represent an unservable hot dog'''
+    # ... snip hot dog class implementation ...
+
+ReadyToServeHotDog = NewType("ReadyToServeHotDog", HotDog)
+
+def dispense_to_customer(hot_dog: ReadyToServeHotDog):
+    # ...
